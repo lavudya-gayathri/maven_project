@@ -1,43 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    <groupid>CSMB</groupid>
-    <ArtifactId>HotelReservationSystem</ArtifactId>
-    <packaging>jar</packaging>
+
+    <groupId>CSMB</groupId>
+    <artifactId>HotelReservationSystem</artifactId>
+
+    <!-- Web application -->
+    <packaging>war</packaging>
+
     <version>1.0-SNAPSHOT</version>
+
     <name>Hotel Reservation System</name>
-    <url>http://localhost:8345/HRS</url>
+
+    <url>http://localhost:8080/HRS</url>
+
     <dependencies>
-        <!-- Servlet API -->
+
+        <!-- Java Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artificatId>servlet-api</artificatId>
+            <artifactId>servlet-api</artifactId>
             <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
+
         <!-- MySQL Database -->
         <dependency>
             <groupId>mysql</groupId>
-            <artifactId>mysql-connector</artifactId>
-            <version>5.1</version>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.49</version>
         </dependency>
+
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+
     <build>
+
         <finalName>HRS</finalName>
+
         <plugins>
-            <!-- Tomcat Plugin -->
+
+            <!-- Maven Compiler Plugin -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
+            <!-- Tomcat 7 Maven Plugin -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
+                <configuration>
+                    <path>/HRS</path>
+                    <port>8080</port>
+                </configuration>
             </plugin>
+
         </plugins>
+
     </build>
+
 </project>
